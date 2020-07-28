@@ -34,7 +34,7 @@ class AppModule(appModuleHandler.AppModule):
 			if obj.role == controlTypes.ROLE_LISTITEM:
 				if obj.parent.UIAElement.CurrentAutomationId == "Messages":
 					for child in obj.children:
-						if child.UIAElement.CurrentAutomationId == "Subtitle" and duration.search(child.name):
+						if child.UIAElement.CurrentAutomationId == "Subtitle" and duration.search(child.name.replace(" ●", "")):
 							obj.name = f"{child.name} - {obj.name}"
 					return
 				elif obj.parent.UIAElement.CurrentAutomationId == "ScrollingFiles" or obj.parent.UIAElement.CurrentAutomationId == "ScrollingLinks" or obj.parent.UIAElement.CurrentAutomationId == "ScrollingHost" or obj.parent.UIAElement.CurrentAutomationId == "ScrollingMedia" or obj.parent.UIAElement.CurrentAutomationId == "ScrollingMusic" or obj.parent.UIAElement.CurrentAutomationId == "ScrollingVoice" or obj.parent.UIAElement.CurrentAutomationId == "DialogsSearchListView" or obj.lastChild.UIAElement.CurrentAutomationId == "Label" or obj.parent.name == "System.Collections.Generic.List`1[Telegram.Td.Api.LanguagePackInfo]":
